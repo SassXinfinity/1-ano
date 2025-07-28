@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Aniversário de Namoro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Cor do texto padrão branca para contrastar com o fundo */
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+             /* Para evitar barras de rolagem se as estrelas saírem da tela */
+            position: relative; /* Necessário para o posicionamento das estrelas */
+        }
+
+        /* Estilo para as estrelas */
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0; /* Começam invisíveis */
+            animation: twinkle 3s infinite ease-in-out, fall 5s linear forwards; /* Animação de piscar e cair */
+            width: 5px; /* Tamanho da estrela */
+            height: 5px; /* Tamanho da estrela */
+        }
+
+        /* Animação de piscar */
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.8); }
+        }
+
+        /* Animação de cair */
+        @keyframes fall {
+            from { top: -10px; }
+            to { top: 100%; }
+        }
+
+        #message {
+            display: none;
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            background-color: lightpurple; /* Fundo levemente transparente para a mensagem */
+            margin: 20px auto; /* Centraliza a mensagem */
+            max-width: 600px; /* Limita a largura da mensagem */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Sombra suave para destacar */
+            position: relative; /* Para que a mensagem fique acima das estrelas */
+            z-index: 1; /* Garante que a mensagem apareça por cima das estrelas */
+        }
+
+        #card {
+            cursor: pointer;
+            padding: 20px;
+            background-color:purple;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block; /* Para que o card se ajuste ao conteúdo */
+            margin-bottom: 20px;
+            transition: transform 0.3s ease; /* Efeito suave ao passar o mouse */
+        }
+
+        #card:hover {
+            transform: scale(1.05); /* Aumenta um pouco o card ao passar o mouse */
+        }
+
+        /* Estilo para o último parágrafo */
+        #message p:last-child {
+            color: #8a2be2; /* Roxo */
+            font-weight: bold; /* Opcional: para destacar ainda mais */
+        }
+    </style>
+</head>
+<body>
+
+<div id="card" onclick="showMessage()">
+    Clique aqui para abrir a carta!
+</div>
+
+<div id="message">
+    <h2>FELIZ UM ANO MINHA VIDA</h2>
+    <p>Eu estou muito muito muito muito muito feliz por estar fazendo um ano de relacionamento com vc, eu não poderia estar mais feliz que agora, esperei tanto por esse marco majestoso.</p>
+    <p>Durante todos esses 365 dias eu fui muito feliz ao seu lado, todas as vezes que eu te olhava tinha certeza que você era a mulher da minha vida, não tenho dúvidas que vamos atingir todas as nossas metas juntas, sei que esses últimos dias não estão sendo os mais fáceis, mas saiba que eu te amo muito e independente do que acontecer nunca vou te deixar.</p>
+    <p>Você é maravilhosa, não falo isso só pq vc é minha namorada, eu digo isso pq vc sempre consegue a melhor e mais gentil com todos a sua volta, sempre apoia em qualquer coisa que seja, você é incrível como pessoa e namorada, já disse outras vezes e vou dizer dnv, eu tenho orgulho de ter você como namorada e futura esposa.</p>
+    <p>Sinto muito a sua falta todos os dias, sinto dos seus abraços, beijos e da maneira que vc me olhava como se eu fosse a pessoa mais preciosa do universo, eu sinto falta do seu cheiro e de te sentir, alguns dias o que eu mais preciso é de você, mas tenho certeza que vamos nos ver em breve e finalmente vou poder matar a saudade que tanto tenho de ter você ao meu lado.</p>
+    <p>Por anos da minha vida eu vivi sem um propósito, hoje o meu incrível e inédito propósito é você, é viver com você e ter a nossa família longe dessa espelunca, você é a pessoa que me fez querer ter sonhos que eu não tinha, agora que tenho, quero realiza-los ao seu lado.</p>
+    <p>Eu te amo muito, minha princesa, estou muuiitooooo feliz por estar completando um ano de namoro com você, você é a melhor namorada de todas e o que sempre desejei.</p>
+    <p>Agradeço por estar comigo sempre, não vejo a hora de estar ao seu lado novamente. 🤍</p>
+</div>
+
+<script>
+function showMessage() {
+    document.getElementById("message").style.display = "block";
+    createStars(); // Chama a função para criar as estrelas
+}
+
+function createStars() {
+    const numStars = 100; // Quantidade de estrelas
+    const body = document.body;
+
+    for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+
+        // Posição aleatória horizontal
+        const randomX = Math.random() * window.innerWidth;
+        star.style.left = `${randomX}px`;
+
+        // Velocidade aleatória para a queda
+        const fallDuration = Math.random() * 3 + 2; // Entre 2 e 5 segundos
+        star.style.animationDuration = `${fallDuration}s`;
+
+        // Atraso aleatório para a animação começar
+        const randomDelay = Math.random() * 5; // Entre 0 e 5 segundos
+        star.style.animationDelay = `${randomDelay}s`;
+
+        body.appendChild(star);
+    }
+}
+</script>
+
+</body>
+</html>
